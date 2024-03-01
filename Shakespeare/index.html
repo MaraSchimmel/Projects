@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shakespeare Search Engine</title>
+
+    <style>
+        body {
+            font-family: "Helvetica", "Arial", sans-serif;
+            font-size: 18pt;
+            color: #333333;
+            background-color: #c88be0;
+            margin: 40px auto;
+            max-width: 640px;
+        }
+
+        div {
+            margin-top: 40px;
+        }
+
+        .border-test {
+          border: 2px black;
+          border-style: solid;
+          background-color:white;
+        }
+
+        .close {
+          display: none;
+        }
+    </style>
+  </head>
+
+  <body>
+    <h1>Shakespeare Search Engine</h1>
+
+    <p>Type a word in the box below and click submit.</p>
+
+    <input type="text" id="inputBox" />
+    <button type="button" id="submitButton"> Submit </button>
+
+    <div class = "col-lg-12 overflow-auto small-text">Your results will appear here<span id = "word-result">:</span></div>
+
+    <div class = "col-lg-12 overflow-auto small-text border-test close" id="output_div"></div>
+
+    <script>
+      document.getElementById('submitButton').onclick = function() {
+
+          var textbox = document.getElementById('inputBox');
+          document.getElementById("word-result").innerHTML = " for the word <b>" + textbox.value + "</b>:";
+          var text = textbox.value;
+          var data = {name: text};
+
+          // Send the request to the server
+          var xmlhttp = new XMLHttpRequest();
+
+          xmlhttp.onload = function() {
+              var data = JSON.parse(this.responseText);
+              document.getElementById('output_div').innerHTML = "";
+
+              let list = data.message;
+              document.getElementById('output_div').classList.remove("close");
+              if (list == undefined) {
+                document.getElementById('output_div').innerHTML = "No results found for " + textbox.value;
+              
+              } else {
+                for (let i = 0; i < list.length; i++) {
+                  let response = JSON.stringify(list[i]);
+                  let obj = JSON.parse(response);
+                  let playName = obj["playName"];
+                  playName = unCap(playName);
+                  let char = obj["char"];
+                  //alert(char);
+                  char = unCap(char);
+                  //alert(char);
+                  let sceneNum = obj["sceneNum"];
+                  let actNum = obj["actNum"];
+                  let line = obj["line"];
+                  let isStage = obj["isStage"];
+                  
+                  document.getElementById('output_div').innerHTML += playName + "<br/>";
+                  document.getElementById('output_div').innerHTML += "Act " + actNum + ", Scene " + sceneNum + "<br/>";
+                  if (isStage) {
+                    document.getElementById('output_div').innerHTML += "Stage direction<br/>";
+                  }//if
+                  else {
+                    document.getElementById('output_div').innerHTML += char + "<br/>";
+                  }//else
+                  document.getElementById('output_div').innerHTML += line + "<br/><br/>";
+                }//for
+              }
+              
+          };
+
+          // Pass parameter using the URL
+          xmlhttp.open("GET", "/submit/?name=" + text);
+          xmlhttp.send();
+      }
+
+      function unCap(str) {
+        switch (str) {
+          case ("MACBETH"):
+            return "Macbeth";
+          case ("ROMEO AND JULIET"):
+            return "Romeo and Juliet";
+          case ("A MIDSUMMER NIGHT'S DREAM"):
+            return "A Midsummer Night's Dream";
+        }//switch
+        words = str.split(" ");
+        let i = 0;
+        for (var word of words) {
+          
+          if (word.charAt(0) == word.charAt(0).toUpperCase()) {
+            
+            //document.getElementById('test').innerHTML=word;
+            //alert("caps");
+            word = word.toLowerCase();
+            //document.getElementById('test').innerHTML=word;
+            //alert(word);
+            if (word != "and") {
+              word = word.charAt(0).toUpperCase() + word.slice(1);
+            }
+            //document.getElementById('test').innerHTML=word;
+            //alert(word);
+            words[i] = word;
+            
+          }//if
+          i++;
+        }//for
+        //alert("join: " + words.join(" "));
+        return words.join(" ");
+      
+        
+      }//unCap
+    </script>
+  </body>
+</html>
