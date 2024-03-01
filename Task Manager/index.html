@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Task Track</title>
+  <link href='https://fonts.googleapis.com/css?family=Libre Franklin' rel='stylesheet'>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="title">
+        Task Tracker
+      </div>
+      <a href="#add" onclick="changeBar('add');"><img src="add-icon-sign-symbol-design-free-png.png">Add Task</a>
+      <a href="#delete" onclick="changeBar('delete');"><img src="3329673.png">Remove Task</a>
+      <a href="#edit" onclick="changeBar('edit');"><img src="edit-new-icon-22.png">Edit Task</a>
+      <a href="#changebg" onclick="changeBar('bg');"><img src="407569.png">Change Background</a>
+    </div>
+
+    <div class="content">
+      <!-- Your main content goes here -->
+      <div class="task-columns">
+        <h1>My Tasks</h1>
+        View only: <input type="checkbox" id="view-only" onchange="viewOnly();">
+        <ul id="task-list" onclick="showTask();">
+          <!--select id="list-order" onchange="flip();">
+            <option value="priority">Sort by Closest Date</option>
+            <option value="back-priority">Sort by Farthest Date</option>
+        </select-->
+          <div onclick="flip();">Sort by end date <img id="order-img" src="down.webp" height="12"><br /><br /></div>
+          <!--li>Task 1</li>
+          <li>Task 2</li>
+          <li>Task 3</li-->
+      </div>
+      <div class="task-info">
+        <!--h1>task info here yes yes</h1-->
+        <div id="add-task">
+          <div class="center">
+            <h2>Add a task</h2>
+          </div>
+          Name: <input type="text" id="task-name">
+          <br />
+          Description: <input type="text" id="task-description">
+          <br />
+          Start Date (year-month-date): <input type="text" id="task-start-date-year">-<input type="text"
+            id="task-start-date-month">-<input type="text" id="task-start-date-day">
+          <br />
+          End Date (year-month-date): <input type="text" id="task-end-date-year">-<input type="text"
+            id="task-end-date-month">-<input type="text" id="task-end-date-day">
+          <br />
+          <button id="add-task-button" onclick="addTask();">Add Task</button>
+          <br />
+          <div id="task-output">
+            <div id="task-name-output"></div>
+            <div id="task-start-date-output"></div>
+            <div id="task-end-date-output"></div>
+          </div>
+
+        </div>
+
+        <div id="edit-task">
+          <div class="center">
+            <h2>Edit a task</h2>
+          </div>
+          Name: <span class="task-show" id="task-name-edit"></span>
+          <br />
+          Description: <input type="text" id="task-description-edit">
+          <br />
+          Start Date (year-month-date): <input type="text" id="task-start-date-edit-year">-<input type="text"
+            id="task-start-date-edit-month">-<input type="text" id="task-start-date-edit-day">
+          <br />
+          End Date (year-month-date): <input type="text" id="task-end-date-edit-year">-<input type="text"
+            id="task-end-date-edit-month">-<input type="text" id="task-end-date-edit-day">
+          <br />
+          <button id="edit-task-button" onclick="editTask();">Edit Task</button>
+          <br />
+          <div id=task-output-edit>
+            <div id="task-name-output-edit"></div>
+            <div id="task-start-date-output-edit"></div>
+            <div id="task-end-date-output-edit"></div>
+
+          </div>
+        </div>
+
+        <div id="show-task">
+          <div class="center">
+            <h2 id="show-task-name">Task Info</h2>
+          </div>
+          Name: <span id="task-name-show" class="task-show"></span>
+          <br />
+          Description: <span id="task-description-show" class="task-show"></span>
+          <br />
+          Start Date: <span id="task-start-date-show" class="task-show"></span>
+          <br />
+          End Date: <span id="task-end-date-show" class="task-show"></span>
+          <span id="delete-task">
+            <br />
+            <button id="delete-task-button" onclick="deleteTask();">Delete Task</button>
+          </span>
+        </div>
+
+        <div id="change-background">
+          <div class="center">
+            <h2>Change Background</h2>
+          </div>
+          <input type="file" id="background-input" accept="image/*" onchange="changeBackground()">
+          <div id="background-preview"></div>
+          <button onclick="resetBackground()">Reset Background</button>
+        </div>
+      </div>
+      <!--<input type="text" id="inputBox" />
+      <button type="button" id="submitButton" onclick="test();"> Submit </button>
+      <div id="output-div">test</div>-->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://replit.com/public/js/replit-badge.js" theme="yellow" defer></script>
+</body>
+
+</html>
