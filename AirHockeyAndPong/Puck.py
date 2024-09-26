@@ -84,9 +84,9 @@ class Puck(Shape):
         self.__ySpeed = reflectVector.y
 
     def __rotateVector(self, vector, thetaR):
-        x = (vector.x * math.cos(-thetaR)) - (vector.y * math.sin(-thetaR))
-        y = (vector.x * math.sin(-thetaR)) + (vector.y * math.cos(-thetaR))
-        returnVector = pygame.Vector2(x, y)
+        x = (vector.x * math.cos(thetaR)) - (vector.y * math.sin(thetaR))
+        y = (vector.x * math.sin(thetaR)) + (vector.y * math.cos(thetaR))
+        returnVector = pygame.Vector2(-x, -y)
         return returnVector
 
     def __getThetaBetweenVectors(self, vector1, vector2):

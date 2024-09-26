@@ -98,6 +98,8 @@ class SelectGame():
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    pong = False
+                    airHockey = False
                     running = False
 
                 if event.type == pygame.VIDEORESIZE:
