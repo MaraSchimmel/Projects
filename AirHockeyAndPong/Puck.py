@@ -162,7 +162,10 @@ class Puck(Shape):
         return self.__pointScored
     
     def getPuckPosition(self):
-        return self.__puckPosition
+        return self.__puckPosition.copy()
+    
+    def getRadius(self):
+        return self.__radius
     
     
     def setPointScored(self, pointScored):

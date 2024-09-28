@@ -8,5 +8,6 @@ IJKL: Player 2 controls (Right Side)
 SPACE: Activate ball / Continue game
 R: Reset the game
 ESCAPE: Exit the game
-1: Select Pong
-2: Select AirHockey
+0: Disable particles
+1: Select Pong / Toggle simple particles
+2: Select Air Hockey / Toggle complex particles

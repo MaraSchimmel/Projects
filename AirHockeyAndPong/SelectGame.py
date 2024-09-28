@@ -40,6 +40,9 @@ class SelectGame():
         self.__txtIjkl = self.__fntMedium.render("IJKL: Player 2 controls", True, TEXT_COLOR)
         self.__txtEsc = self.__fntMedium.render("ESCAPE: Exit the game", True, TEXT_COLOR)
         self.__txtSpace = self.__fntMedium.render("SPACE: Activate Ball", True, TEXT_COLOR)
+        self.__txt0 = self.__fntMedium.render("0: Disable all particles", True, TEXT_COLOR)
+        self.__txt1 = self.__fntMedium.render("1. Toggle simple particles", True, TEXT_COLOR)
+        self.__txt2 = self.__fntMedium.render("2. Toggle complex particles", True, TEXT_COLOR)
         self.__txtR = self.__fntMedium.render("R: Reset game", True, TEXT_COLOR)
         self.__txtContinue = self.__fntSmall.render("Press space to continue", True, TEXT_COLOR)
 
@@ -49,6 +52,9 @@ class SelectGame():
         self.__escWidth = self.__txtEsc.get_width()
         self.__spaceWidth = self.__txtSpace.get_width()
         self.__rWidth = self.__txtR.get_width()
+        self.__0Width = self.__txt0.get_width()
+        self.__1Width = self.__txt1.get_width()
+        self.__2Width = self.__txt2.get_width()
         self.__continueWidth = self.__txtContinue.get_width()
     
     def run(self):
@@ -78,6 +84,9 @@ class SelectGame():
         self.__txtEsc = self.__fntMedium.render("ESCAPE: Exit the game", True, TEXT_COLOR)
         self.__txtSpace = self.__fntMedium.render("SPACE: Activate Ball", True, TEXT_COLOR)
         self.__txtR = self.__fntMedium.render("R: Reset game", True, TEXT_COLOR)
+        self.__txt0 = self.__fntMedium.render("0: Disable all particles", True, TEXT_COLOR)
+        self.__txt1 = self.__fntMedium.render("1. Toggle simple particles", True, TEXT_COLOR)
+        self.__txt2 = self.__fntMedium.render("2. Toggle complex particles", True, TEXT_COLOR)
         self.__txtContinue = self.__fntSmall.render("Press space to continue", True, TEXT_COLOR)
 
         self.__labelWidth = self.__txtLabel.get_width()
@@ -86,6 +95,9 @@ class SelectGame():
         self.__escWidth = self.__txtEsc.get_width()
         self.__spaceWidth = self.__txtSpace.get_width()
         self.__rWidth = self.__txtR.get_width()
+        self.__0Width = self.__txt0.get_width()
+        self.__1Width = self.__txt1.get_width()
+        self.__2Width = self.__txt2.get_width()
         self.__continueWidth = self.__txtContinue.get_width()
 
 
@@ -126,13 +138,16 @@ class SelectGame():
                 self.__screen.blit(self.__txtLine2, ((self.__screen.get_width() / 2) - (self.__txtWidth2 / 2), self.__screen.get_height() * 1.5 / 3))
                 self.__screen.blit(self.__instructionsTxt, ((self.__screen.get_width() / 2) - (self.__txtWidthInstructions / 2), self.__screen.get_height() * 2.5 / 3))
             else:
-                self.__screen.blit(self.__txtLabel, ((self.__screen.get_width() / 2) - self.__labelWidth / 2, self.__screen.get_height() * .25 / 3))
-                self.__screen.blit(self.__txtWasd, ((self.__screen.get_width() / 2) - self.__wasdWidth / 2, self.__screen.get_height() * 1 / 3))
-                self.__screen.blit(self.__txtIjkl, ((self.__screen.get_width() / 2) - self.__ijklWidth / 2, self.__screen.get_height() * 1.25 / 3))
-                self.__screen.blit(self.__txtSpace, ((self.__screen.get_width() / 2) - self.__spaceWidth / 2, self.__screen.get_height() * 1.5 / 3))
-                self.__screen.blit(self.__txtR, ((self.__screen.get_width() / 2) - self.__rWidth / 2, self.__screen.get_height() * 1.75 / 3))
-                self.__screen.blit(self.__txtEsc, ((self.__screen.get_width() / 2) - self.__escWidth / 2, self.__screen.get_height() * 2 / 3))
-                self.__screen.blit(self.__txtContinue, ((self.__screen.get_width() / 2) - self.__continueWidth / 2, self.__screen.get_height() * 2.5 / 3))
+                self.__screen.blit(self.__txtLabel, ((self.__screen.get_width() / 2) - self.__labelWidth / 2, self.__screen.get_height() * .15 / 3))
+                self.__screen.blit(self.__txtWasd, ((self.__screen.get_width() / 2) - self.__wasdWidth / 2, self.__screen.get_height() * .65 / 3))
+                self.__screen.blit(self.__txtIjkl, ((self.__screen.get_width() / 2) - self.__ijklWidth / 2, self.__screen.get_height() * .9 / 3))
+                self.__screen.blit(self.__txtSpace, ((self.__screen.get_width() / 2) - self.__spaceWidth / 2, self.__screen.get_height() * 1.15 / 3))
+                self.__screen.blit(self.__txt0, ((self.__screen.get_width() / 2) - self.__0Width / 2, self.__screen.get_height() * 1.4 / 3))
+                self.__screen.blit(self.__txt1, ((self.__screen.get_width() / 2) - self.__1Width / 2, self.__screen.get_height() * 1.65 / 3))
+                self.__screen.blit(self.__txt2, ((self.__screen.get_width() / 2) - self.__2Width / 2, self.__screen.get_height() * 1.9 / 3))
+                self.__screen.blit(self.__txtR, ((self.__screen.get_width() / 2) - self.__rWidth / 2, self.__screen.get_height() * 2.15 / 3))
+                self.__screen.blit(self.__txtEsc, ((self.__screen.get_width() / 2) - self.__escWidth / 2, self.__screen.get_height() * 2.4 / 3))
+                self.__screen.blit(self.__txtContinue, ((self.__screen.get_width() / 2) - self.__continueWidth / 2, self.__screen.get_height() * 2.75 / 3))
             pygame.display.flip()
             clock.tick(60)
 
