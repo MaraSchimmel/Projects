@@ -243,7 +243,7 @@ class Pong():
             if (spaceTxt != ""):
                 spaceWidth = spaceTxt.get_width()
                 self.__screen.blit(spaceTxt, (self.__screen.get_width() / 2 - (spaceWidth / 2), self.__screen.get_height() * 6 / 7))
-                if (self.__complexity != ""):
+                if (self.__complexity != "" and self.__gameInProgress):
                     self.__drawComplexity()
 
 
