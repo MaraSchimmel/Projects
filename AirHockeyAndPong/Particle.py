@@ -9,11 +9,13 @@ class Particle(Shape):
         position = emitter.getBallPosition() if game == "p" else emitter.getPuckPosition()
         self.__position = position
         self.__radius = emitter.getRadius() if complexity == "s" else emitter.getRadius() * .5
+        self.__drawRadius = self.__radius
         self.__lifespan = LIFESPAN
         self.__complexity = complexity
         self.__transparency = 0
         self.__age = 0
         self.__drawColor = emitter.getColor()
+
         if complexity == "c":
             self.__points = []
             self.__lifespan *= 1.5
@@ -30,7 +32,8 @@ class Particle(Shape):
                 pt['endColor'] = endColor
 
                 yDisplace = emitter.getRadius() * .4 * (random.randint(1, 8) - 4) / 4
-                pt['position'] = pygame.Vector2(self.__position.x, self.__position.y + yDisplace)
+                xDisplace = emitter.getRadius() * .4 * random.randint(-2,2) / 2
+                pt['position'] = pygame.Vector2(self.__position.x + xDisplace, self.__position.y + yDisplace)
 
                 pt['drawColor'] = startColor
                 self.__points.append(pt)
@@ -40,7 +43,7 @@ class Particle(Shape):
             pygame.draw.circle(screen, self.__drawColor, self.__position, self.__radius)
         elif (self.__complexity == "c"):
             for pt in self.__points:
-                pygame.draw.circle(screen, pt['drawColor'], pt['position'], self.__radius)
+                pygame.draw.circle(screen, pt['drawColor'], pt['position'], self.__drawRadius)
 
     def updateAge(self):
         self.__age += 1
@@ -51,6 +54,9 @@ class Particle(Shape):
         if (self.__complexity == "s"):
             self.__drawColor = self.combineColors(BACKGROUND_COLOR, self.getColor(), self.__transparency)
         elif (self.__complexity == "c"):
+            self.__drawRadius = self.__radius
+            for i in range(self.__age):
+                self.__drawRadius *= .95
             for pt in self.__points:
                 mixedColor = self.combineColors(pt['endColor'], pt['startColor'], self.__transparency)
                 pt['drawColor'] = mixedColor
