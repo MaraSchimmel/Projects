@@ -98,6 +98,7 @@ class Ball(Shape):
 
     def resetPosition(self, screen, speed):
         self.__ballPosition = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+        self.__radius = screen.get_height() / 20
         self.__xSpeed = speed if self.__xSpeed > 0 else -speed
         self.__ySpeed = 0
 
@@ -127,7 +128,10 @@ class Ball(Shape):
         return self.__pointScored
     
     def getBallPosition(self):
-        return self.__ballPosition
+        return self.__ballPosition.copy()
+    
+    def getRadius(self):
+        return self.__radius
 
 
     def setPointScored(self, pointScored):

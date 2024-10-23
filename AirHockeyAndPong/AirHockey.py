@@ -1,5 +1,6 @@
 from Puck import Puck
 from PaddleCircle import PaddleCircle
+from Particle import Particle
 from Constants import *
 import pygame
 import math
@@ -20,7 +21,82 @@ class AirHockey():
 
         self.__gameInProgress = True
         self.__isMoving = False
+
+        self.__particles = []
+        self.__complexity = ""
+        self.__lastCreated = 0
+        self.__sExample = []
+        self.__cExample = []
+        
         self.__resizeWindow()
+
+    def __toggleParticles(self, complexity):
+        match complexity:
+            case "":
+                self.__complexity = ""
+            case "s":
+                if self.__complexity == "s":
+                    self.__complexity = ""
+                else:
+                    self.__complexity = "s"
+            case "c":
+                if self.__complexity == "c":
+                    self.__complexity = ""
+                else:
+                    self.__complexity = "c"
+        self.__particles.clear()
+
+    def __drawComplexity(self):
+        if self.__complexity == "s":
+            for pt in self.__sExample:
+                pt.draw(self.__screen)
+        elif self.__complexity == "c":
+            for pt in self.__cExample:
+                pt.draw(self.__screen)
+
+    def __createComplexityExamples(self):
+        self.__sExample.clear()
+        self.__cExample.clear()
+
+        complexities = ["s", "c"]
+        for complexity in complexities:
+            emitterRadius = self.__scoreFontSize
+            emitterPosition = pygame.Vector2(self.__screen.get_width() / 2 + emitterRadius, self.__screen.get_height() * 6.6 / 7)
+            emitter = Puck(CIRCLE_COLOR, emitterPosition, emitterRadius, False)
+            for i in range(4, -1, -1):
+                newParticle = Particle(emitter, complexity, "a")
+                newAge = math.floor((i * 1.0) / 5.0 * newParticle.getLifespan())
+                newParticle.setAge(newAge)
+                newParticle.calcTransparency()
+                emitterPosition.x -= emitterRadius / 2
+                if complexity == "s":
+                    self.__sExample.append(newParticle)
+                elif complexity == "c":
+                    self.__cExample.append(newParticle)
+
+    def __createParticles(self, currentTime):
+        if (not self.__isMoving or currentTime - self.__lastCreated < 2):
+            return
+        self.__lastCreated = currentTime
+        newParticle = Particle(self.__puck, self.__complexity, "a")
+        self.__particles.append(newParticle)
+    
+    def __updateParticles(self):
+        if (not self.__isMoving):
+            return
+        returnParticles = []
+
+        for particle in self.__particles:
+            particle.updateAge()
+            particle.calcTransparency()
+            if (not particle.isDead()):
+                returnParticles.append(particle)
+
+        self.__particles = returnParticles
+                    
+    def __drawParticles(self):
+        for particle in self.__particles:
+            particle.draw(self.__screen)
 
     def __resizeWindow(self):
         self.__paddleSpeed = self.__screen.get_height() / 60
@@ -31,7 +107,11 @@ class AirHockey():
         self.__scoreFontSize = math.floor(self.__screen.get_width() / 50)
         self.__winnerFontSize = math.floor(self.__screen.get_width() / 20)
 
+        self.__createComplexityExamples()
+
     def __setMoving(self, isMoving):
+        if not isMoving:
+            self.__particles.clear()
         self.__isMoving = isMoving
         self.__puck.setIsMoving(self.__isMoving)
         self.__paddleL.setIsMoving(self.__isMoving)
@@ -54,6 +134,8 @@ class AirHockey():
 
         winnerLWidth = winnerLTxt.get_width()
         winnerRWidth = winnerRTxt.get_width()
+
+        currentTime = 0
 
         while running:            
 
@@ -94,6 +176,12 @@ class AirHockey():
                         rPoints = 0
                         self.__puck.setPointScored(False)
                         self.__setMoving(False)
+                    elif keys[pygame.K_0]:
+                        self.__toggleParticles("")
+                    elif keys[pygame.K_1]:
+                        self.__toggleParticles("s")
+                    elif keys[pygame.K_2]:
+                        self.__toggleParticles("c")
 
             
             if keys[pygame.K_w]:
@@ -131,6 +219,9 @@ class AirHockey():
             if (self.__gameInProgress):
                 self.__screen.fill(BACKGROUND_COLOR)
                 self.__screen.blit(scoreTxt, (self.__screen.get_width() / 2 - (scoreWidth / 2), 10))
+                self.__createParticles(currentTime)
+                self.__updateParticles()
+                self.__drawParticles()
                 self.__paddleL.draw(self.__screen)
                 self.__paddleR.draw(self.__screen)
                 self.__puck.move(self.__screen, self.__paddleL, self.__paddleR)
@@ -144,14 +235,18 @@ class AirHockey():
                     self.__resizeWindow()
                     self.__puck.setPointScored(True)
             
+            spaceTxt = ""
             if (not self.__gameInProgress or (self.__gameInProgress and lPoints == 0 and rPoints == 0 and not self.__isMoving)):
-                startTxt = scoreFnt.render("Press space to start", True, TEXT_COLOR)
-                startWidth = startTxt.get_width()
-                self.__screen.blit(startTxt, (self.__screen.get_width() / 2 - (startWidth / 2), self.__screen.get_height() * 6 / 7))
+                spaceTxt = scoreFnt.render("Press space to start", True, TEXT_COLOR)
             elif (self.__gameInProgress and not self.__isMoving):
-                continueTxt = scoreFnt.render("Press space to continue", True, TEXT_COLOR)
-                continueWidth = continueTxt.get_width()
-                self.__screen.blit(continueTxt, (self.__screen.get_width() / 2 - (continueWidth / 2), self.__screen.get_height() * 6 / 7))
+                spaceTxt = scoreFnt.render("Press space to continue", True, TEXT_COLOR)
+            if (spaceTxt != ""):
+                spaceWidth = spaceTxt.get_width()
+                self.__screen.blit(spaceTxt, (self.__screen.get_width() / 2 - (spaceWidth / 2), self.__screen.get_height() * 6 / 7))
+                if (self.__complexity != "" and self.__gameInProgress):
+                    self.__drawComplexity()
+
             pygame.display.flip()
+            currentTime += 1
             clock.tick(60)
         pygame.quit()
