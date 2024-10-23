@@ -1,3 +1,5 @@
+This is a python project using pygame that simulates two different games: air hockey and pong. Pong is a re - creation of the classic 1972 game with a fun twist (particles are emitted when you play). 
+
 Requires pygame import
 
 Run from main.py
