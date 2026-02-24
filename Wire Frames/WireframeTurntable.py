@@ -152,7 +152,7 @@ def main():
     # Initialize pygame
     pygame.init()
     screen = pygame.display.set_mode((800, 600),pygame.RESIZABLE)
-    pygame.display.set_caption("Wireframe Turntable - Mara Schimmel")
+    pygame.display.set_caption("Wireframe Turntable")
     clock = pygame.time.Clock()
     
     # Read the object data file
