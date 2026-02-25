@@ -1,0 +1,173 @@
+:root {
+    --rollinsBlue: rgb(0, 114, 188);
+}
+
+/*General Spacing --------------------------------------------------*/
+*{
+    margin: 0;
+    font-family: Metropolis, sans-serif
+}
+
+.container-fluid{
+    border: 0;
+    padding: 0;
+}
+
+.row {
+    margin: auto;
+}
+
+.container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+p {
+    font-size: 16pt;
+}
+
+.anchorBlack {
+    color: black;
+}
+
+/* Header ---------------------------------------------------------*/
+.pageHeader {
+    width: 80%;
+    margin: auto;
+    border: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pageHeader > header > div {
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 14pt;
+
+}
+
+
+a, .pageHeader > div > h1{
+    color: white;
+    
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+    rgba(0,0,0,0.0)), url(ImageFiles/headerImage.png);
+
+    height: 375px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 0;
+
+    z-index: 1;
+}
+
+.hero-text {
+    color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-20%, -50%);
+}
+
+.hero-text > h1 {
+    font-size: 40pt;
+}
+
+#topLogo {
+    height: 100px;
+}
+
+
+/* Page content --------------------------------------------------*/ 
+/* Program Overview */
+#ProgramOverview {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+/*Administration */
+#Administration {
+    background-color:rgb(240,240,240);
+}
+
+#Administration > .row {
+    width: 80%;
+
+    border: 10px;
+    padding: 40px;
+}
+
+#AdministrationTitle {
+    padding-bottom: 0;
+}
+
+#AdministrationTitle > div > h1 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/*Why Do CRF -----------------------------------------------*/
+#WhyDoCRF {
+    background-color: var(--rollinsBlue);
+    height: auto;
+}
+
+
+#WhyDoCRF > .row {
+    width: 90%;
+    color: white;
+}
+
+#CRFHeader {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 80px;
+}
+
+#WhyDoCRF > .row > .col-4 {
+    padding: 5px;
+
+}
+
+.card {
+    margin: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    color: black;
+}
+
+/* Support Undergraduate Research ----------------------------------------*/
+#Support {
+    width: 40%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#donateBtn {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer -----------------------------------------------------------------*/
+#footer {
+    background-color: var(--rollinsBlue);
+    color: white;
+    padding: 20px;
+}

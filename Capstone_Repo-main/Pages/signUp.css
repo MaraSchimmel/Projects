@@ -1,0 +1,173 @@
+
+:root {
+    --rollinsBlue: rgb(0, 114, 188);
+    --rollinsDark: rgb(0, 94, 156);
+}
+
+
+/* General Styling --------------------------------------------------------*/
+.hidden {
+    display: none;
+}
+
+.anchorBlack {
+    color: black;
+}
+
+.correct {
+    color: green;
+}
+
+.missing {
+    color: red;
+}
+
+a {
+    color: white;
+}
+
+#signupLink {
+    color: blue;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    border: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* Header ---------------------------------------------------------*/
+.pageHeader {
+    width: 80%;
+    margin: auto;
+    border: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pageHeader > .row {
+    margin: 0;
+    padding: auto;
+    width: 100%;
+}
+
+.pageHeader > header > div {
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 14pt;
+}
+
+div > a {
+    color: white;
+}
+
+
+.pageHeader > div > h1{
+    color: white;
+    
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+    rgba(0,0,0,0.0)), url(../ImageFiles/headerImage.png);
+
+    height: 375px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 0;
+
+    z-index: 1;
+}
+
+.hero-text {
+    color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-20%, -50%);
+}
+
+.hero-text > h1 {
+    font-size: 40pt;
+}
+
+#topLogo {
+    height: 100px;
+}
+
+
+/* Sign Up Section ---------------------------------------------------------*/
+#sign-up-div {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+#sign-in-logo {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sign-up > p {
+    margin-top: 20px;
+}
+
+#sign-up-button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#info-div {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    color: red;
+}
+
+
+/* Footer ---------------------------------------------------------------*/
+#footer {
+    background-image: linear-gradient(90deg, var(--rollinsBlue), var(--rollinsDark));
+
+    margin: 0;
+    padding: 20px;
+    border: 0;
+}
+
+#footer {
+    padding-left: 10px;
+}
+
+#footer > div > div > * {
+    color: white;
+}

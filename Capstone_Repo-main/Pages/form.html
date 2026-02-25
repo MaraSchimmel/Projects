@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Portal Page</title>
+
+    <!-- Bootstrap Links -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+    <!-- See if javascript links are necessary, not always are-->
+     <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    -->
+
+    <!-- Style sheet-->
+    <link rel="stylesheet" href="form.css"></link>
+</head>
+
+<body class="container-fluid">
+    <!-- Content -->
+    <main>
+
+    <!-- Nav Bar and Header -->
+    <!-- Nav Bar -->
+    <div class="pageHeader">
+        <header class="row">
+            <div class="col-2"><img id="topLogo" src="../ImageFiles/CRFLogo.png" alt="Rollins Logo"></div>
+            <div class="col-2"><a href="../index.html">Home</a></div>
+            <div class="col-2"><a href="resources.html">Resources</a></div>
+            <div class="col-2"><a href="examples.html">Examples</a></div>
+            <div class="col-2"><a href="faq.html">FAQ</a></div>
+            <div class="col-2"><a href="sources.html">About Us</a></div>
+        </header>
+    </div>
+
+    <!-- Header -->
+    <div class="hero-image" id="pageTitle">
+        <div class="hero-text">
+            <h1><bold>Frequently Asked Questions</bold></h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <button id="sign-out" class="btn btn-secondary hidden">Sign out</button>
+
+	<!-- Sign in Section -------------------------------------------------------------------------------------------->
+        <div id="sign-in-div" class="card">
+	        <img src="../ImageFiles/CRFLogo.png" alt="CRF Logo" id="log-in-logo">
+            <form id="sign-in" enctype="multipart/form-data" class="form-group card-body">
+                <p>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" autocomplete="username" class="form-control" required>
+                </p>
+                <p>
+                    <label for="password">Password: </label>
+                    <input type="password" id="password" autocomplete="current-password" class="form-control" required>
+                </p>
+                <button id="sign-in-button" type="submit" class="btn btn-primary">Sign in</button>
+                <a id="signupLink" href="signUp.html" class="btn btn-primary">Sign Up</a>
+                <div id="login-error"></div>
+            </form>
+        </div>
+
+            <div id="user-name" class="row"></div>
+
+            <div id="info-print" class="row">
+        </div>
+
+	<!-- Student View ----------------------------------------------------------------------------------------------->
+        <div id="student-view" class="hidden">
+            <div id="form-student-background" class="hidden"></div>
+            <form id="form-student" class="container card hidden" enctype="multipart/form-data">
+                <p id="student-close-form" class="row" id="btnrow">
+                    <button class="btn btn-danger">Cancel</button>
+                </p>
+                <p class="row data">
+                    <label for="student-name" id="student-name-label">Name: </label>
+                    <input type="text"id="student-name" name="student-name" autocomplete="name" required>
+                </p>
+                <p class="row data">
+                    <label for="student-r-number">R Number: </label>
+                    <input type="text" id="student-r-number" name="student-r-number" required disabled>
+                </p>
+                <p class="row data">
+                    <label for="timeline">Timeline:</label>
+                    <input type="file" id="timeline" accept="application/pdf" name="timeline" required>
+                </p>
+                <p class="row data">
+                    <label for="proposal">Proposal: </label>
+                    <input type="file" id="proposal" accept="application/pdf" name="proposal" required>
+                </p>
+                <p class="row data">
+                    <label for="student-cover-letter">Cover letter: </label>
+                    <input type="file" id="student-cover-letter" accept="application/pdf" name="student-cover-letter" required>
+                </p>
+                <br>
+                <p id="student-submit-form" class="row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </p>
+                
+            </form>
+            <div id="status-box" class="status card">
+                <h5>Status: </h5>
+                <p id="status-student"></p>
+                <h5>Submitted: </h5>
+                <input type="date" id="submitted-student" disabled>
+                <br><br>
+                <button id="update-student-info" class="btn btn-primary" data-toggle="modal" data-target="form-student">Update info</button>
+            </div>
+
+            <div id="status-fox-div-student">
+                <img id="status-fox-student" width="200px">
+            </div>
+            
+            <div id="prev-submission-student">
+                <p class="row">Name: <input type="text" id="student-name-student-display" disabled></p>
+                <p class="row">R Number: <input type="text" id="student-rNumber-student-display" disabled></p>
+                <p class="row">Timeline: <button id="timeline-student-display" class="btn btn-secondary">Download timeline</button></p>
+                <p class="row">Proposal: <button id="proposal-student-display" class="btn btn-secondary">Download proposal</button></p>
+                <p class="row">Cover letter: <button id="student-cv-student-display" class="btn btn-secondary">Download CV</button></p>
+            </div>
+
+        </div>
+
+	<!-- Faculty View ---------------------------------------------------------------------------------------------------->
+        <div id="faculty-view" class="hidden">
+            <p class="row">Select a student:</p>
+            <select id="faculty-student-select" class="row">
+                <option value="" selected disabled></option>
+
+            </select>
+            <br>
+            <div id="form-faculty-background" class="hidden"></div>
+            <form id="form-faculty" enctype="multipart/form-data" class="container card hidden">
+                <p id="faculty-close-form" class="row">
+                    <button class="btn btn-danger">Cancel form</button>
+                </p>
+                <p class="row data">
+                    <label for="faculty-name">Name: </label>
+                    <input type="text" id="faculty-name" name="faculty-name" autocomplete="name" required>
+                </p>
+                <p class="row data">
+                    <label for="faculty-r-number">R Number: </label>
+                    <input type="text" id="faculty-r-number" name="faculty-r-number" required disabled>
+                </p>
+                <p class="row data">
+                    <span>Dates: </span>
+                    <input type="date" id="date-start" name="date-start" required>
+                    <span> - </span>
+                    <input type="date" id="date-end" name="date-end" required>
+                </p>
+                <p class="row data">
+                    <label for="budget">Budget: </label>
+                    <input type="file" id="budget" accept="application/pdf" name="budget" required>
+                </p>
+                <p class="row data">
+                    <label for="faculty-cover-letter">Cover letter: </label>
+                    <input type="file" id="faculty-cover-letter" accept="application/pdf" name="faculty-cover-letter" required>
+                </p>
+                <br>
+                <p id="faculty-submit-form" class="row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </p>
+            </form>
+            <div id="faculty-status-div" class="hidden card status" style="outline-style:solid;">
+                <h5>Status: </h5>
+                <p id="status-faculty"></p>
+                <h5>Submitted: </h5>
+                <input type="date" id="submitted-faculty" disabled>
+                <br><br>
+                <button id="update-faculty-info" class="btn btn-primary">Update info</button>
+            </div>
+
+            <div id="status-fox-div-faculty" class="hidden">
+                <img id="status-fox-faculty" width="200px">
+            </div>
+            
+
+            <div id="prev-submission-faculty" class="hidden">
+                <h4 class="row">Student:</h4>
+                <div class="row">
+                <p>Name: <input type="text" id="student-name-faculty-display" disabled></p>
+                </div>
+                <div class="row">
+                <p>R Number: <input type="text" id="student-rNumber-faculty-display" disabled></p>
+                </div>
+                <div class="row">
+                <p>Timeline: <button id="timeline-faculty-display" class="btn btn-secondary">Download timeline</button></p>
+                </div>
+                <div class="row">
+                <p>Proposal: <button id="proposal-faculty-display" class="btn btn-secondary">Download proposal</button></p>
+                </div>
+                <div class="row">
+                <p>Cover letter: <button id="student-cv-faculty-display" class="btn btn-secondary">Download student CV</button></p>
+                </div>
+                <br>
+                <div id="faculty-data-faculty-display">
+                    <h4 class="row">Faculty:</h4>
+                    <div class="row">
+                    <p>Name: <input type="text" id="faculty-name-faculty-display" disabled></p>
+                    </div>
+                    <div class="row">
+                    <p>R Number: <input type="text" id="faculty-rNumber-faculty-display" disabled></p>
+                    </div>
+                    <div class="row">
+                        <p>Dates: <input type="date" id="date-start-faculty-display" disabled> - <input type="date" id="date-end-faculty-display" disabled></p>
+                    </div>
+                    
+                    <div class="row">
+                    <p>Budget: <button id="budget-faculty-display" class="btn btn-secondary">Download budget</button></p>
+                    </div>
+                    <div class="row">
+                    <p>Cover Letter: <button id="faculty-cv-faculty-display" class="btn btn-secondary">Download faculty CV</button></p>
+                    </div>
+                    <br><br>
+                    <button id="submit-btn" class="btn btn-primary row">Submit for review</button>
+                    <div id="confirm-faculty-background" class="hidden"></div>
+                    <div id="confirm-div-faculty" class="hidden">
+                        <p id="confirm-message-faculty">Once submitted, you will not be able to change any information. Are you sure you want to submit now?</p>
+                        <div class="row">
+                            <button id="confirm-continue-faculty" class="btn btn-success">Confirm</button>
+                            <button id="confirm-cancel-faculty" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+	<!-- Admin View ----------------------------------------------------------------------------------------------------------->
+        <div id="admin-view" class="hidden">
+
+            <p id="initial-sort" class="row">
+                <span>Select sorting options: </span>
+                <select id="admin-sort-select">
+                    <option value="" selected disabled></option>
+                    <option value="student">Sort by student</option>
+                    <option value="faculty">Sort by faculty</option>
+    
+                </select>
+            </p>
+            
+
+            <div id="student-sort" class="row hidden">
+                <p>
+                    <span>Select a student: </span>
+                    <select id="admin-student-select-student-sort">
+                        <option value="" selected disabled></option>
+        
+                    </select>
+                </p>
+            </div>
+
+            <div id="faculty-sort" class="row hidden">
+                <p class="col-sm">
+                    <span>Select a faculty member: </span>
+                    <select id="admin-faculty-select-faculty-sort">
+                        <option value="" selected disabled></option>
+        
+                    </select>
+                </p>
+                
+                <p class="col-sm hidden">
+                    <span>Select a student: </span>
+                    <select id="admin-student-select-faculty-sort">
+                        <option value="" selected disabled></option>
+        
+                    </select>
+                </p>
+                
+            </div>
+
+            <div id="form-admin-background" class="hidden"></div>
+            <form id="form-admin" enctype="multipart/form-data" class="hidden container card">
+                <p id="admin-close-form" class="row">
+                    <button class="btn btn-danger">Cancel form</button>
+                </p>
+                <p class="row data">
+                    <label for="admin-name">Name: </label>
+                    <input type="text" id="admin-name" name="admin-name" autocomplete="name" required>
+                </p>
+                <p class="row data">
+                    <label for="admin-r-number">R Number: </label>
+                    <input type="text" id="admin-r-number" name="admin-r-number" required disabled>
+                </p>
+                <p class="row data">
+                    <span>Dates: </span>
+                    <input type="date" id="admin-date-start" name="admin-date-start" required>
+                    <span> - </span>
+                    <input type="date" id="admin-date-end" name="admin-date-end" required>
+                </p>
+                <p class="row data">
+                    <label for="admin-budget">Budget: </label>
+                    <input type="file" id="admin-budget" accept="application/pdf" name="admin-budget" required>
+                </p>
+                <p class="row data">
+                    <label for="admin-cover-letter">Cover letter: </label>
+                    <input type="file" id="admin-cover-letter" accept="application/pdf" name="admin-cover-letter" required>
+                </p>
+                <p id="admin-submit-form" class="row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </p>
+            </form>
+
+            <div id="admin-status-div" class="card status hidden" style="outline-style:solid;">
+                <h5>Status: </h5>
+                <p id="status-admin"></p>
+                <h5>Submitted: </h5>
+                <input type="date" id="submitted-admin" disabled>
+                <br>
+                <button id="approve" class="btn btn-success">Approve</button>
+                <button id="deny" class="btn btn-danger">Deny</button>
+                <button id="update-admin-info" class="hidden btn btn-primary">Update info</button>
+                <span id="approve-deny-status"></span>
+            </div>
+
+            <div id="status-fox-div-admin" class="hidden">
+                <img id="status-fox-admin" width="200px">
+            </div>
+
+            <div id="prev-submission-admin" class="hidden">
+                <h3 class="row">Student:</h3>
+                <p class="row">Name: <input type="text" id="student-name-admin-display" disabled></p>
+                <p class="row">R Number: <input type="text" id="student-rNumber-admin-display" disabled></p>
+                <p class="row">Timeline: <button id="timeline-admin-display" class="btn btn-secondary">Download timeline</button></p>
+                <p class="row">Proposal: <button id="proposal-admin-display" class="btn btn-secondary">Download proposal</button></p>
+                <p class="row">Cover letter: <button id="student-cv-admin-display" class="btn btn-secondary">Download student CV</button></p>
+                <br>
+                <div id="faculty-data-admin-display">
+                    <h3 class="row">Faculty:</h3>
+                    <p class="row">Name: <input type="text" id="faculty-name-admin-display" disabled></p>
+                    <p class="row">R Number: <input type="text" id="faculty-rNumber-admin-display" disabled></p>
+                    <div class="row">
+                        <p>Dates: <input type="date" id="date-start-admin-display" disabled> - <input type="date" id="date-end-admin-display" disabled></p>
+                    </div>
+                    <p class="row">Budget: <button id="budget-admin-display" class="btn btn-secondary">Download budget</button></p>
+                    <p class="row">Cover Letter: <button id="faculty-cv-admin-display" class="btn btn-secondary">Download faculty CV</button></p>
+                    <br><br>
+                    <button id="submit-btn-admin" class="hidden btn btn-primary row">Submit for review</button>
+                    <div id="confirm-admin-background" class="hidden"></div>
+                    <div id="confirm-div-admin" class="hidden">
+                        <p id="confirm-message-admin">Once submitted, you will not be able to change any information. Are you sure you want to submit now?</p>
+                        <div class="row">
+                            <button id="confirm-continue-admin" class="btn btn-success">Confirm</button>
+                            <button id="confirm-cancel-admin" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="config.js"></script>
+    <script type="module" src="form.js"></script>
+
+    </main>
+
+    <br><br><br>
+    <!-- Footer --> 
+    <div id="footer" class="row">
+        <div class="col-sm">
+            <div class="row"><img class="img-fluid" src="../ImageFiles/RollinsLogo.png" alt="Rollins College Logo"></div>
+            <div class="row">
+                <p><b>Office of Admission</b><br>
+                1000 Holt Ave. - 2720<br>
+                Winter Park, FL 32789<br>
+                <a href="tel:+407-646-2161">407-646-2161</a>
+                </p>
+            </div>
+            <div class="row">
+                <p><a href="mailto:admission@rollins.edu">admission@rollins.edu</a><br>
+                <a href="https://www.rollins.edu/visit/plan-your-visit">Campus Map & Directions</a></p>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="row"><a href="https://www.rollins.edu/why-rollins/"><b>Why Rollins</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/academics/"><b>Academics</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/apply/"><b>Apply</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/scholarships-aid/"><b>Financial Aid</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/student-life/"><b>Student Life</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/visit/"><b>Visit</b></a></div>
+            <div class="row"><a href="https://www.rollins.edu/athletics/"><b>Athletics</b></a></div>
+        </div>
+        
+        <div class="col-sm">
+            <div class="row"><b>Resources</b></div>
+            <div class="row"><a href="https://www.rollins.edu/college-of-liberal-arts/news/">News</a></div>
+            <div class="row"><a href="https://www.rollins.edu/scholarships-aid/faqs/">Financial Aid FAQs</a></div>
+            <div class="row"><a href="https://www.rollins.edu/apply/first-time/faqs/">First-Time Admission FAQs</a></div>
+            <div class="row"><b>Information For</b></div>
+            <div class="row"><a href="https://www.rollins.edu/college-of-liberal-arts/">Full-time Undergraduate</a></div>
+            <div class="row"><a href="https://www.rollins.edu/transfer-to-rollins-college">Transferring</a></div>
+            <div class="row"><a href="https://crummer.rollins.edu/">Graduate Business & Executive Education</a></div>
+            <div class="row"><a href="https://www.rollins.edu/professional-advancement/">Professional Advancement</a></div>
+            <div class="row"><a href="https://www.rollins.edu/graduate">Graduate Studies</a></div>
+        </div>
+
+        <div class="col-sm"><a href="https://www.rollins.edu/apply/">Apply to Rollins</a></div>
+
+     </div>
+</body>
+</html>
