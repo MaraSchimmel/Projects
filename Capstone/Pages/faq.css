@@ -1,0 +1,223 @@
+:root {
+    --rollinsBlue: rgb(0, 114, 188);
+    --rollinsYellow: rgb(255, 212, 0);
+}
+
+.hidden {
+    display: none;
+}
+
+/*General Spacing --------------------------------------------------*/
+*{
+    margin: 0;
+    font-family: Metropolis, sans-serif
+}
+
+.container-fluid{
+    border: 0;
+    padding: 0;
+}
+
+.row {
+    margin: auto;
+}
+
+.container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+a, .pageHeader > div > h1{
+    color: white;
+}
+
+.anchorBlack {
+    color: black;
+}
+
+/* Header ---------------------------------------------------------*/
+.pageHeader {
+    width: 80%;
+    margin: auto;
+    border: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pageHeader > .row {
+    margin: 0;
+    padding: auto;
+    width: 100%;
+}
+
+.pageHeader > header > div {
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 14pt;
+
+}
+
+
+a, .pageHeader > div > h1{
+    color: white;
+    
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+    rgba(0,0,0,0.0)), url(../ImageFiles/headerImage.png);
+
+    height: 375px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 0;
+
+    z-index: 1;
+}
+
+.hero-text {
+    color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-20%, -50%);
+}
+
+.hero-text > h1 {
+    font-size: 40pt;
+}
+
+#topLogo {
+    height: 100px;
+}
+
+
+/* Quick access ----------------------------------------------------*/
+#quickAccessbtn {
+    transform: rotate(0.75turn);
+    
+    width: 50vh;
+    height: 3vw;
+    min-height: 50px;
+    position: fixed;
+    left: -22vh;
+    top: 65vh;
+
+    font-size: 16pt;
+
+    z-index: 10;
+
+}
+
+#quickAccess {
+    height: 50vh;
+    
+    position: fixed;
+    left: 3vw;
+    top: 43vh;
+
+    background-color: white;
+    border-top: solid 2px var(--rollinsBlue);
+    border-right: solid 2px var(--rollinsBlue);
+    border-bottom: solid 2px var(--rollinsBlue);
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    align-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 9;
+
+}
+
+#quickAccess > p {
+    font-size: 16pt;
+    padding-top: 10px;
+}
+
+#quickAccess > p > a {
+    color: var(--rollinsBlue);
+}
+
+
+/* Question ---------------------------------------------------------*/
+#questions > .row {
+    width: 60%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+#questions > div > h3 {
+    color: var(--rollinsBlue);
+    font-weight: bold;
+    font-size: 20pt;
+
+    text-decoration: underline var(--rollinsYellow);
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
+}
+
+h3 {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+#questions > div > p {
+    margin-top: 10px;
+    font-size: 16pt;
+}
+
+
+/* Chatbot ----------------------------------------------------------*/
+#chatWindow {
+    position: fixed;
+    right:0;
+    bottom: 0;
+
+    background-color: var(--rollinsBlue);
+}
+
+#BilBotBtn {
+    width: 25vw;
+
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+#BilbotBaggins {
+    width: 25vw;
+    height: 300px;
+
+    padding: 10px;
+    border: 0;
+    margin: 0;    
+}
+
+#BilbotBagginsFox {
+    width: 200px;
+    position: fixed;
+    right: 10px;
+    bottom: 25px;
+}
+
+/* Footer -----------------------------------------------------*/
+#footer {
+    height: 35vh;
+    padding: 20px;
+}

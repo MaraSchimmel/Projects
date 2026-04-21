@@ -95,18 +95,15 @@ function readText(err, fullText) {
 
               if (index[word] == undefined) {
                 index[word] = [];
-                //console.log('word not found: ' + word);
               }//if
 
               let strBuild = '{"playName":"' + playName + '", "actNum":"' + actNum + '", "sceneNum":"' + sceneNum + '", "char":"' + char + '", "line":"' + ele1[0] + "&nbsp;&nbsp;&nbsp;&nbsp;" + ele1[1] + '","isStage":' + isStage + '}';
-              //console.log(typeof(strBuild));
               var data = JSON.parse(strBuild);
               if (changeStage) {
                 isStage = false;
                 changeStage = false;
               }
               index[word].push(data);
-              //console.log(Object.keys(index).length);
             }
           }
         }
@@ -121,7 +118,6 @@ function readText(err, fullText) {
         if (ele.length == 2) {
           let ele0 = ele[0].split(" ");
           if (ele0[0] == "SCENE") {
-            //console.log(ele[0]);
             sceneNum = ele0[1];
           }
           else {
@@ -130,7 +126,6 @@ function readText(err, fullText) {
             for (let wordSel of words) {
               if (wordSel != '') {
                 word = wordSel;
-                //console.log(word);
                 if (word.includes("[") || word.includes("]")) {
                   isStage = true;
                   if (word.charAt(0) == "[") {
@@ -147,11 +142,9 @@ function readText(err, fullText) {
                 
                 if (index[word] == undefined) {
                   index[word] = [];
-                  //console.log('word not found: ' + word);
                 }//if
                 
                 let strBuild = '{"playName":"' + playName + '", "actNum":"' + actNum + '", "sceneNum":"' + sceneNum + '", "char":"' + char + '", "line":"' + ele[0] + "&nbsp;&nbsp;&nbsp;&nbsp;" + ele[1] + '","isStage":' + isStage + '}';
-                //console.log(typeof(strBuild));
                 var data = JSON.parse(strBuild);
                 if (changeStage) {
                   isStage = false;
@@ -166,15 +159,11 @@ function readText(err, fullText) {
         
         if (line.charAt(0) == " ") {
           words = line.split(" ");
-          //console.log(words);
-          //console.log(line);
           for (let wordSel of words) {
             if (wordSel != '') {
               word = wordSel;
-              //console.log(word);
               if (word.includes("[") || word.includes("]")) {
                 isStage = true;
-                //console.log(word);
                 if (word.charAt(0) == "[") {
                   word = word.substring(1, word.length);
                 }
@@ -182,7 +171,6 @@ function readText(err, fullText) {
                   word = word.substring(0, word.length - 1);
                   changeStage = true;
                 }
-                //console.log(word);
               }//If its a stage direction, mark it a stage direction
 
               word = punct(word);
@@ -190,7 +178,6 @@ function readText(err, fullText) {
               
               if (index[word] == undefined) {
                 index[word] = [];
-                //console.log('word not found: ' + word);
               }
               let strBuild = '{"playName":"' + playName + '", "actNum":"' + actNum + '", "sceneNum":"' + sceneNum + '", "char":"' + char + '", "line":"' + "&nbsp;&nbsp;&nbsp;&nbsp;"+ line + '","isStage":' + isStage + '}';
               var data = JSON.parse(strBuild);

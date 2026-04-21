@@ -1,0 +1,399 @@
+:root {
+    --rollinsBlue: rgb(0, 114, 188);
+    --rollinsDark: rgb(0, 94, 156);
+    --dataMargins: 15vw;
+}
+
+main {
+    min-height: calc(375px + 450px);
+}
+
+
+/* General Styling --------------------------------------------------------*/
+.hidden {
+    display: none;
+}
+
+.anchorBlack {
+    color: black;
+}
+
+a {
+    color: white;
+}
+
+#signupLink {
+    color: blue;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-left: 20%;
+}
+
+p {
+    font-size: 14pt;
+}
+
+h3, h4 {
+    color: var(--rollinsBlue);
+}
+
+
+/* Header ---------------------------------------------------------*/
+.pageHeader {
+    width: 80%;
+    margin: auto;
+    border: 0;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    z-index: 5;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pageHeader > .row {
+    margin: 0;
+    padding: auto;
+    width: 100%;
+}
+
+.pageHeader > header > div {
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 14pt;
+
+}
+
+
+a, .pageHeader > div > h1{
+    color: white;
+    
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), 
+    rgba(0,0,0,0.0)), url(../ImageFiles/headerImage.png);
+
+    height: 375px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 0;
+
+    z-index: 1;
+}
+
+.hero-text {
+    color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-20%, -50%);
+}
+
+.hero-text > h1 {
+    font-size: 40pt;
+}
+
+#topLogo {
+    height: 100px;
+}
+
+
+/* Sign-in view ----------------------------------------------------------*/
+#sign-in-div {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+#sign-in > p > input {
+    margin: 0;
+}
+
+#log-in-logo {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signupLink {
+    color: white;
+}
+
+#login-error {
+    color: red;
+    align-content: center;
+}
+
+/* General View ----------------------------------------------------------*/
+#status-fox-div-student, #status-fox-div-faculty, #status-fox-div-admin {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+/* Status Box  */
+#status-box, #faculty-status-div, #admin-status-div {
+    outline-style: solid;
+
+    z-index: 4;
+    width: 300px;
+
+    position: absolute;
+    right: var(--dataMargins);
+    top: 475px;
+
+    margin: 10px;
+}
+
+.status > * {
+    margin: 10px;
+}
+
+.status > h5 {
+    font-size: 20pt;
+    margin-top: 20px;
+}
+
+.status > p {
+    font-size: 20pt;
+}
+
+#user-name {
+    color: var(--rollinsBlue);
+    margin-left: var(--dataMargins);
+    font-weight: bold;
+}
+
+#submitted-student, #submitted-faculty, #submitted-admin {
+    font-size: 20pt;
+    text-align: left;
+    padding: 10px;
+}
+
+#form-student-background, #form-faculty-background, #form-admin-background, #confirm-faculty-background, #confirm-admin-background{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color:rgba(211, 211, 211, 0.5);
+
+    z-index: 6;
+}
+
+#confirm-continue-faculty, #confirm-cancel-faculty, #confirm-continue-admin, #confirm-cancel-admin {
+    font-size: 18pt;
+    width: 150px;
+}
+
+#form-student, #form-faculty, #form-admin {
+    background-color: white;
+    border: solid black;
+    margin: 0;
+    padding: 0;
+    z-index: 7;
+    
+    position: fixed;
+    left: 30vw;
+    top: 15vh;
+
+    width: 40vw;
+}
+
+#confirm-div-faculty, #confirm-div-admin {
+    background-color: white;
+    border: solid black;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 7;
+
+    position: fixed;
+    left: 30vw;
+    top: 35vh;
+
+    width: 40vw;    
+    min-height: 30vh;
+}
+
+#confirm-div-faculty > *, #confirm-div-admin > * {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#confirm-div-faculty > .row, #confirm-div-admin > .row {
+    justify-content: space-around;
+}
+
+#confirm-message-faculty, #confirm-message-admin {
+    color: red;
+    font-size: 20pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+#form-student > .data, #form-faculty > .data, #form-admin > .data {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#info-print {
+    width: calc(100vw - var(--dataMargins) - var(--dataMargins));
+    margin-left: var(--dataMargins);
+}
+
+/* General info print */
+#info-print > p {
+    font-weight: bold;
+    font-size: 30pt;
+
+    color: var(--rollinsBlue);
+
+    margin-top: 45px;
+    
+}
+
+#info-print > p > a {
+    color: black;
+}
+
+#student-name, #student-r-number, #faculty-name, #faculty-r-number, #admin-name, #admin-r-number{
+    border: 2px solid black;
+    margin-left: 30px;
+}
+
+#student-close-form, #student-submit-form, #faculty-close-form, #faculty-submit-form, #admin-close-form, #admin-submit-form {
+    justify-content: right;
+
+    margin: 0;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#student-close-form, #faculty-close-form, #admin-close-form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    background-color: rgb(231, 231, 231);
+    border-bottom: solid 2px black;
+
+    margin-bottom: 20px;
+}
+
+#student-submit-form, #faculty-submit-form, #admin-submit-form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    background-color: rgb(231, 231, 231);
+    border-top: solid 2px black;
+}
+
+/* Student View ----------------------------------------------------------*/
+#sign-out {
+    position: absolute;
+    right: var(--dataMargins);
+}
+
+#form-student > p > input {
+    margin-left: 20px;
+}
+
+/* Previously Submitted */
+#prev-submission-student > p {
+    margin-top: 30px;
+    margin-left: var(--dataMargins);
+}
+
+#prev-submission-student > p > span, #prev-submission-student > p > input{
+    display: block;
+    padding-left: 10px;
+}
+
+input {
+    background-color: white;
+    border: none;
+    color: black;
+}
+
+/* Faculty View ----------------------------------------------*/
+p > input, p > button {
+    margin-left: 30px;
+}
+
+#faculty-view > .row, #prev-submission-faculty > .row, #faculty-data-faculty-display > .row, 
+#prev-submission-admin > .row, #faculty-data-admin-display > .row, #initial-sort, #student-sort, #faculty-sort{
+    margin-left: var(--dataMargins);
+}
+
+input[type=date]{
+    text-align: center;
+    margin: 0;
+}
+
+/* Admin View ------------------------------------------------*/
+#faculty-sort {
+    width: 45vw;
+}
+
+#faculty-sort > .col-sm {
+    padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer ----------------------------------------------------*/
+#footer {
+    background-color: var(--rollinsBlue);
+    color: white;
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+
+#footer > div > div {
+    margin: 0;
+}

@@ -138,11 +138,9 @@ function prestigeSword() {
   let element = document.getElementById("sword-click");
   switch(enemy) {
     case "pixies":
-      //element.src="silver-sword.png";
       prestigeCost = 2000;
       break;
     case "slimes":
-      //element.src="slime-sword.png";
       prestigeCost = 5000;
       break;
     case "trees":
@@ -366,8 +364,8 @@ function rotate(t) {
 //*** Attack Crossbow ***//
 function attackCrossbow() {
   let cross = document.getElementById("crossbow-icon");
-  cross.src="crossbow_shot.png";
-  setTimeout(function() {cross.src="crossbow_loaded.png"}, 300);
+  cross.src="images/weapons/crossbow_shot.png";
+  setTimeout(function() {cross.src="images/weapons/crossbow_loaded.png"}, 300);
 }
 
 
@@ -438,12 +436,14 @@ function switchEnemy() {
       }
 
       //switch sword
-      document.getElementById("sword-click").src = "silver_sword.png";
+      document.getElementById("sword-click").src = "images/weapons/swords/silver_sword.png";
+      document.getElementById("sword-click").alt = "Silver sword";
       
       //switch enemy
       enemy = "slimes";
       document.getElementById("enemy-name").innerHTML = "Slimes";
-      document.getElementById("enemy").src = "slime.jpg";
+      document.getElementById("enemy").src = "images/enemies/slime.jpg";
+      document.getElementById("enemy").alt = "Slime"
       hp = 150;
       maxHp = 150;
       maxEnemies = 50;
@@ -458,10 +458,12 @@ function switchEnemy() {
       }
       
       //switch sword
-      document.getElementById('sword-click').src = "slime_sword.png";
+      document.getElementById('sword-click').src = "images/weapons/swords/slime_sword.png";
+      document.getElementById('sword-click').alt = "Slime sword";
 
       //switch enemy
-      document.getElementById('enemy').src = "tree.png";
+      document.getElementById('enemy').src = "images/enemies/tree.png";
+      document.getElementById('enemy').alt = "Tree";
       enemy = "trees";
       document.getElementById("enemy-name").innerHTML = "Trees";
       maxHp = 250;
@@ -478,10 +480,12 @@ function switchEnemy() {
       }
 
       //switch sword
-      document.getElementById('sword-click').src = "wood_sword.png";
+      document.getElementById('sword-click').src = "images/weapons/swords/wood_sword.png";
+      document.getElementById('sword-click').alt = "Wood sword";
 
       //switch enemy
-      document.getElementById('enemy').src = "troll.png";
+      document.getElementById('enemy').src = "images/enemies/troll.png";
+      document.getElementById('enemy').alt = "Troll";
       enemy = "trolls";
       document.getElementById("enemy-name").innerHTML = "Trolls";
       hp = 500;
@@ -495,10 +499,12 @@ function switchEnemy() {
       document.getElementById('crossbow-icon').hidden = true;
       
       //switch sword
-      document.getElementById('sword-click').src = "jeweled_sword.png";
+      document.getElementById('sword-click').src = "images/weapons/swords/jeweled_sword.png";
+      document.getElementById('sword-click').alt = "Sword with gems";
 
       //switch enemy
-      document.getElementById('enemy').src = "hydra.jpg";
+      document.getElementById('enemy').src = "images/enemies/hydra.jpg";
+      document.getElementById('enemy').alt = "Hydra";
       enemy = "hydras";
       document.getElementById("enemy-name").innerHTML = "Hydras";
       hp = 2000;
@@ -514,7 +520,8 @@ function switchEnemy() {
       }
       
       //switch enemy
-      document.getElementById('enemy').src = "head1.png";
+      document.getElementById('enemy').src = "images/enemies/head1.png";
+      document.getElementById('enemy').alt = "Left hydra head";
       enemy = "head1";
       document.getElementById("enemy-name").innerHTML = "Heads #1";
       hp = maxHp - 500;
@@ -532,7 +539,8 @@ function switchEnemy() {
       }
       
       //switch enemy
-      document.getElementById('enemy').src = "head2.png";
+      document.getElementById('enemy').src = "images/enemies/head2.png";
+      document.getElementById('enemy').alt = "Middle hydra head";
       document.getElementById('enemy-name').innerHTML = "Heads #2";
       enemy = "head2";
       hp = maxHp + 1000;
@@ -550,7 +558,8 @@ function switchEnemy() {
       }
 
       //switch enemy
-      document.getElementById('enemy').src = "head3.png";
+      document.getElementById('enemy').src = "images/enemies/head3.png";
+      document.getElementById('enemy').alt = "Right hydra head";
       enemy = "head3";
       document.getElementById('enemy-name').innerHTML = "Heads #3";
       hp = maxHp + 1000;
@@ -563,7 +572,8 @@ function switchEnemy() {
       document.getElementById('crossbow-icon').hidden = true;
 
       //switch enemy
-      document.getElementById('enemy').src = "hydra.jpg";
+      document.getElementById('enemy').src = "images/enemies/hydra.jpg";
+      document.getElementById('enemy').alt = "Hydra";
       enemy = "hydras";
       document.getElementById("enemy-name").innerHTML = "Hydras";
       hp = maxHp + 500;
